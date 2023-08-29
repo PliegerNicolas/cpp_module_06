@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/24 14:53:38 by nplieger          #+#    #+#              #
-#    Updated: 2023/08/29 10:59:23 by nplieger         ###   ########.fr        #
+#    Updated: 2023/08/29 14:22:20 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS_PATH		=			./srcs
 MAIN_NAME		=			main
 
 SRCS_NAMES		=			ScalarConverter	\
+							stringMethods	\
 
 #* ************************************************************************** *#
 #* *                               INCLUDES                                 * *#

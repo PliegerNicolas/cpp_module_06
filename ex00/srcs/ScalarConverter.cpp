@@ -6,10 +6,11 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:38:01 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 14:09:05 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:26:57 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
+#include "stringMethods.cpp"
 
 /* Constructors & Destructors */
 
@@ -70,56 +71,6 @@ void	ScalarConverter::convert(const std::string &input)
 
 	/* Checks */
 
-static std::string	lowercaseStringCpy(const std::string &src)
-{
-	std::string	dest;
-
-	dest = src;
-	for (size_t i = 0; i < dest.length(); ++i)
-	{
-		if (dest[i] >= 'A' && dest[i] <= 'Z')
-			dest[i] += 32;
-	}
-	return (dest);
-}
-
-static bool	verifyStringFormat(const std::string &input)
-{
-	std::string			str;
-	int					nbr_of_dots = 0;
-	const std::string	validStrings[4] =
-	{
-		"nan",
-		"nanf",
-		"inf",
-		"inff"
-	};
-
-	// Make a lowercased copy of the string.
-	str = lowercaseStringCpy(input);
-	// Remove potential leading sign
-	if (str[0] == '+' || str[0] == '-')
-		str.erase(0, 1);
-	// Verify if it's exceptionnal value
-	for (std::string validString : validStrings)
-		if (str == validString)
-			return (true);
-	// Remove potential trailing 'f'
-	if (str[str.size() - 1] == 'f')
-		str.erase(str.size() - 1, 1);
-	for (size_t i = 0; i < str.length(); ++i)
-	{
-		if (!std::isdigit(str[i]))
-		{
-			if (str[i] == '.' && nbr_of_dots == 0)
-				nbr_of_dots++;
-			else
-				return (false);
-		}
-	}
-	return (true);
-}
-
 void	ScalarConverter::checkConvertToChar(const std::string &input)
 {
 	long long int	val;
@@ -135,9 +86,6 @@ void	ScalarConverter::checkConvertToChar(const std::string &input)
 	else if (!verifyStringFormat(input))
 		throw ConversionImpossibleException("To char");
 
-	//if (input.find('.') != std::string::npos || input.find('e') != std::string::npos)
-	//	val = std::atof(input.c_str());
-	//else
 	val = std::atoi(input.c_str());
 	if (val < INT_MIN || val > INT_MAX)
 		throw ConversionImpossibleException("To char");
