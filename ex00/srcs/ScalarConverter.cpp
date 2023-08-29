@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:38:01 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 17:27:25 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:29:32 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -129,7 +129,18 @@ void	ScalarConverter::checkConvertToFloat(const std::string &input)
 
 void	ScalarConverter::checkConvertToDouble(const std::string &input)
 {
-	(void)input;
+	long double	val;
+
+	if (input.size() == 0)
+		throw ConversionImpossibleException("To double");
+	else if (input.size() == 1 && !std::isdigit(input[0]))
+		return ;
+	else if (verifyStringFormat(input) == 1)
+		throw ConversionImpossibleException("To double");
+
+	val = std::atoi(input.c_str());
+	if (val < -std::numeric_limits<float>::max() || val > std::numeric_limits<float>::max())
+		throw ConversionImpossibleException("To double");
 }
 
 	/* Conversions */
@@ -194,5 +205,20 @@ void ScalarConverter::convertToFloat(const std::string &input)
 
 void ScalarConverter::convertToDouble(const std::string &input)
 {
-	(void)input;
+	double	value;
+
+	try
+	{
+		ScalarConverter::checkConvertToDouble(input);
+		if (input.size() == 1 && !std::isdigit(input[0]))
+			value = input[0];
+		else
+			value = std::atof(input.c_str());
+		std::cout << std::fixed << std::setprecision(1);
+		std::cout << "To double : " << value << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
