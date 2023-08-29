@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:38:01 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 14:26:57 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:10:23 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -89,13 +89,26 @@ void	ScalarConverter::checkConvertToChar(const std::string &input)
 	val = std::atoi(input.c_str());
 	if (val < INT_MIN || val > INT_MAX)
 		throw ConversionImpossibleException("To char");
-	if (val < 0 || !std::isprint(val))
+	if (val < 0 || val > 255)
+		throw ConversionImpossibleException("To char");
+	else if (!std::isprint(val))
 		throw ConversionNonDisplayableException("To char");
 }
 
 void	ScalarConverter::checkConvertToInt(const std::string &input)
 {
-	(void)input;
+	long long int	val;
+
+	if (input.size() == 0)
+		throw ConversionImpossibleException("To int");
+	else if (input.size() == 1 && !std::isdigit(input[0]))
+		return ;
+	else if (!verifyStringFormat(input))
+		throw ConversionImpossibleException("To int");
+
+	val = std::atoi(input.c_str());
+	if (val < INT_MIN || val > INT_MAX)
+		throw ConversionImpossibleException("To int");
 }
 
 void	ScalarConverter::checkConvertToFloat(const std::string &input)
@@ -131,7 +144,21 @@ void ScalarConverter::convertToChar(const std::string &input)
 
 void ScalarConverter::convertToInt(const std::string &input)
 {
-	(void)input;
+	int	value;
+
+	try
+	{
+		checkConvertToInt(input);
+		if (input.size() == 1 && !std::isdigit(input[0]))
+			value = input[0];
+		else
+			value = std::atoi(input.c_str());
+		std::cout << "To int : " << value << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 void ScalarConverter::convertToFloat(const std::string &input)
