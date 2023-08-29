@@ -6,10 +6,13 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:21:36 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 17:19:38 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:35:33 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <string>
+
+# define MIN_MAJ_DIFF 32
+# define TOTAL_ASCII_CHARACTERS 255
 
 static std::string	lowercaseStringCpy(const std::string &src)
 {
@@ -19,7 +22,7 @@ static std::string	lowercaseStringCpy(const std::string &src)
 	for (size_t i = 0; i < dest.length(); ++i)
 	{
 		if (dest[i] >= 'A' && dest[i] <= 'Z')
-			dest[i] += 32;
+			dest[i] += MIN_MAJ_DIFF;
 	}
 	return (dest);
 }

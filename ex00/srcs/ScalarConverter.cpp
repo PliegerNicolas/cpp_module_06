@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:38:01 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 17:29:32 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:38:07 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -87,7 +87,8 @@ void	ScalarConverter::checkConvertToChar(const std::string &input)
 		throw ConversionImpossibleException("To char");
 
 	val = std::atoi(input.c_str());
-	if (val < std::numeric_limits<int>::min() || val > std::numeric_limits<int>::max())
+	if (val < std::numeric_limits<int>::min()
+		|| val > std::numeric_limits<int>::max())
 		throw ConversionImpossibleException("To char");
 	if (val < 0 || val > 255)
 		throw ConversionImpossibleException("To char");
@@ -107,7 +108,8 @@ void	ScalarConverter::checkConvertToInt(const std::string &input)
 		throw ConversionImpossibleException("To int");
 
 	val = std::atoi(input.c_str());
-	if (val < std::numeric_limits<int>::min() || val > std::numeric_limits<int>::max())
+	if (val < std::numeric_limits<int>::min()
+		|| val > std::numeric_limits<int>::max())
 		throw ConversionImpossibleException("To int");
 }
 
@@ -123,7 +125,8 @@ void	ScalarConverter::checkConvertToFloat(const std::string &input)
 		throw ConversionImpossibleException("To float");
 
 	val = std::atoi(input.c_str());
-	if (val < -std::numeric_limits<float>::max() || val > std::numeric_limits<float>::max())
+	if (val < -std::numeric_limits<float>::max()
+		|| val > std::numeric_limits<float>::max())
 		throw ConversionImpossibleException("To float");
 }
 
@@ -139,7 +142,8 @@ void	ScalarConverter::checkConvertToDouble(const std::string &input)
 		throw ConversionImpossibleException("To double");
 
 	val = std::atoi(input.c_str());
-	if (val < -std::numeric_limits<float>::max() || val > std::numeric_limits<float>::max())
+	if (val < -std::numeric_limits<double>::max()
+		|| val > std::numeric_limits<double>::max())
 		throw ConversionImpossibleException("To double");
 }
 
