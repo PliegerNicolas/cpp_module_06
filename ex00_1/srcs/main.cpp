@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:16:34 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 18:43:29 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:11:42 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -90,12 +90,7 @@ int	main(int argc, char **argv)
 	*/
 
 	//ScalarConverter::convert(argv[1]);
-	ScalarConverter::convert("");
-	ScalarConverter::convert("\x03");
-	ScalarConverter::convert("a");
-	ScalarConverter::convert("1");
-	ScalarConverter::convert("pomme");
-	(void)test;
+	test();
 	(void)argc;
 	(void)argv;
 	return (0);
