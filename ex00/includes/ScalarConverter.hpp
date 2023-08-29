@@ -6,12 +6,13 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:34:27 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 14:27:02 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:23:19 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
 
 # include <iostream>
+# include <iomanip>
 # include <string>
 # include <cstdlib>
 # include <climits>

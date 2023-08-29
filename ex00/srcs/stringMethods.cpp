@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:21:36 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 14:25:24 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:19:38 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <string>
@@ -24,10 +24,8 @@ static std::string	lowercaseStringCpy(const std::string &src)
 	return (dest);
 }
 
-bool	verifyStringFormat(const std::string &input)
+bool	verifyIfValidString(const std::string &input)
 {
-	std::string			str;
-	int					nbr_of_dots = 0;
 	const std::string	validStrings[4] =
 	{
 		"nan",
@@ -35,13 +33,22 @@ bool	verifyStringFormat(const std::string &input)
 		"inf",
 		"inff"
 	};
+	for (std::string validString : validStrings)
+		if (input == validString)
+			return (true);
+	return (false);
+}
+
+int	verifyStringFormat(const std::string &input)
+{
+	std::string			str;
+	int					nbr_of_dots = 0;
 
 	str = lowercaseStringCpy(input);
 	if (str[0] == '+' || str[0] == '-')
 		str.erase(0, 1);
-	for (std::string validString : validStrings)
-		if (str == validString)
-			return (true);
+	if (verifyIfValidString(str))
+		return (2);
 	if (str[str.size() - 1] == 'f')
 		str.erase(str.size() - 1, 1);
 	for (size_t i = 0; i < str.length(); ++i)
@@ -51,8 +58,8 @@ bool	verifyStringFormat(const std::string &input)
 			if (str[i] == '.' && nbr_of_dots == 0)
 				nbr_of_dots++;
 			else
-				return (false);
+				return (1);
 		}
 	}
-	return (true);
+	return (0);
 }

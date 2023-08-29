@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:38:01 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 17:04:49 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:27:25 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -83,7 +83,7 @@ void	ScalarConverter::checkConvertToChar(const std::string &input)
 			throw ConversionNonDisplayableException("To char");
 		return ;
 	}
-	else if (!verifyStringFormat(input))
+	else if (verifyStringFormat(input))
 		throw ConversionImpossibleException("To char");
 
 	val = std::atoi(input.c_str());
@@ -103,7 +103,7 @@ void	ScalarConverter::checkConvertToInt(const std::string &input)
 		throw ConversionImpossibleException("To int");
 	else if (input.size() == 1 && !std::isdigit(input[0]))
 		return ;
-	else if (!verifyStringFormat(input))
+	else if (verifyStringFormat(input))
 		throw ConversionImpossibleException("To int");
 
 	val = std::atoi(input.c_str());
@@ -113,7 +113,18 @@ void	ScalarConverter::checkConvertToInt(const std::string &input)
 
 void	ScalarConverter::checkConvertToFloat(const std::string &input)
 {
-	(void)input;
+	long double	val;
+
+	if (input.size() == 0)
+		throw ConversionImpossibleException("To float");
+	else if (input.size() == 1 && !std::isdigit(input[0]))
+		return ;
+	else if (verifyStringFormat(input) == 1)
+		throw ConversionImpossibleException("To float");
+
+	val = std::atoi(input.c_str());
+	if (val < -std::numeric_limits<float>::max() || val > std::numeric_limits<float>::max())
+		throw ConversionImpossibleException("To float");
 }
 
 void	ScalarConverter::checkConvertToDouble(const std::string &input)
@@ -129,7 +140,7 @@ void ScalarConverter::convertToChar(const std::string &input)
 
 	try
 	{
-		checkConvertToChar(input);
+		ScalarConverter::checkConvertToChar(input);
 		if (input.size() == 1 && !std::isdigit(input[0]))
 			value = input[0];
 		else
@@ -148,7 +159,7 @@ void ScalarConverter::convertToInt(const std::string &input)
 
 	try
 	{
-		checkConvertToInt(input);
+		ScalarConverter::checkConvertToInt(input);
 		if (input.size() == 1 && !std::isdigit(input[0]))
 			value = input[0];
 		else
@@ -163,7 +174,22 @@ void ScalarConverter::convertToInt(const std::string &input)
 
 void ScalarConverter::convertToFloat(const std::string &input)
 {
-	(void)input;
+	float	value;
+
+	try
+	{
+		ScalarConverter::checkConvertToFloat(input);
+		if (input.size() == 1 && !std::isdigit(input[0]))
+			value = input[0];
+		else
+			value = std::atof(input.c_str());
+		std::cout << std::fixed << std::setprecision(1);
+		std::cout << "To float : " << value << "f" << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 void ScalarConverter::convertToDouble(const std::string &input)
