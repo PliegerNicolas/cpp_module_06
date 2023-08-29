@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:38:01 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 15:10:23 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:04:49 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -87,7 +87,7 @@ void	ScalarConverter::checkConvertToChar(const std::string &input)
 		throw ConversionImpossibleException("To char");
 
 	val = std::atoi(input.c_str());
-	if (val < INT_MIN || val > INT_MAX)
+	if (val < std::numeric_limits<int>::min() || val > std::numeric_limits<int>::max())
 		throw ConversionImpossibleException("To char");
 	if (val < 0 || val > 255)
 		throw ConversionImpossibleException("To char");
@@ -107,7 +107,7 @@ void	ScalarConverter::checkConvertToInt(const std::string &input)
 		throw ConversionImpossibleException("To int");
 
 	val = std::atoi(input.c_str());
-	if (val < INT_MIN || val > INT_MAX)
+	if (val < std::numeric_limits<int>::min() || val > std::numeric_limits<int>::max())
 		throw ConversionImpossibleException("To int");
 }
 
