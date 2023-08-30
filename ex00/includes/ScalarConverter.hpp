@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:34:27 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 18:37:41 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/30 13:46:58 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -24,6 +24,7 @@
 # define CLEAR "\033[0m"
 
 # include "Exceptions.hpp"
+# include "checkString.hpp"
 
 /* **************************/
 /* This is a 'static class' */
@@ -45,15 +46,11 @@ class	ScalarConverter
 
 		/* Member functions */
 
-		static void	checkConvertToChar(const std::string &input);
-		static void	checkConvertToInt(const std::string &input);
-		static void	checkConvertToFloat(const std::string &input);
-		static void	checkConvertToDouble(const std::string &input);
+		static void	checkCharConversion(const char &input);
+		static void	checkIntConversion(const double &value);
 
-		static void convertToChar(const std::string &input);
-		static void convertToInt(const std::string &input);
-		static void convertToFloat(const std::string &input);
-		static void convertToDouble(const std::string &input);
+		static void	charConversion(const char &input);
+		static void	stringConversion(const std::string &input);
 
 	protected:
 		/* Attributs */
@@ -72,4 +69,3 @@ class	ScalarConverter
 
 		static void	convert(const std::string &input);
 };
-

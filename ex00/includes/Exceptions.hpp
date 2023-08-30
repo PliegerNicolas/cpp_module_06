@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 10:55:38 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/29 12:46:35 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:28:55 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -20,10 +20,9 @@ class ConversionImpossibleException : public std::exception
 		std::string	_message;
 
 	public:
-		ConversionImpossibleException(const std::string message)
+		ConversionImpossibleException(void)
 		{
-			_message = message +
-				std::string(" : ScalarConverter::Exception - conversion impossible");
+			_message = std::string("ScalarConverter::Exception - conversion impossible");
 		}
 
 		virtual const char* what() const throw()
@@ -38,10 +37,9 @@ class ConversionNonDisplayableException : public std::exception
 		std::string	_message;
 
 	public:
-		ConversionNonDisplayableException(const std::string message)
+		ConversionNonDisplayableException(void)
 		{
-			_message = message +
-				std::string(" : ScalarConverter::Exception - conversion non displayable");
+			_message = std::string("ScalarConverter::Exception - conversion non displayable");
 		}
 
 		virtual const char* what() const throw()
