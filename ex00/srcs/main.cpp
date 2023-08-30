@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:16:34 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 14:43:10 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:27:05 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -15,19 +15,21 @@
 # define RED "\033[31m"
 # define CLEAR "\033[0m"
 
+static void	convert(const std::string str)
+{
+	std::cout << GREEN << "Given '";
+	std::cout << str << "':" << CLEAR << std::endl;
+	ScalarConverter::convert(str);
+}
+
 static void	testSubject(void)
 {
 	std::cout << "\033[36;4m" << "testSubject():" << CLEAR << std::endl;
 	std::cout << std::endl;
 
-	std::cout << GREEN << "Given '0':" << CLEAR << std::endl;
-	ScalarConverter::convert("0");
-	std::cout << GREEN << "Given 'O':" << CLEAR << std::endl;
-	ScalarConverter::convert("O");
-	std::cout << GREEN << "Given 'nan':" << CLEAR << std::endl;
-	ScalarConverter::convert("nan");
-	std::cout << GREEN << "Given '*':" << CLEAR << std::endl;
-	ScalarConverter::convert("*");
+	convert("0");
+	convert("nan");
+	convert("*");
 
 	std::cout << std::endl;
 }
@@ -39,28 +41,54 @@ static void	testChars(void)
 
 	std::cout << GREEN << "Given empty string:" << CLEAR << std::endl;
 	ScalarConverter::convert("");
-	std::cout << GREEN << "Given 'a':" << CLEAR << std::endl;
-	ScalarConverter::convert("a");
-	std::cout << GREEN << "Given 'A':" << CLEAR << std::endl;
-	ScalarConverter::convert("A");
-	std::cout << GREEN << "Given '1':" << CLEAR << std::endl;
-	ScalarConverter::convert("1");
-	std::cout << GREEN << "Given '0':" << CLEAR << std::endl;
-	ScalarConverter::convert("0");
-	std::cout << GREEN << "Given '32':" << CLEAR << std::endl;
-	ScalarConverter::convert("32");
-	std::cout << GREEN << "Given '126':" << CLEAR << std::endl;
-	ScalarConverter::convert("126");
-	std::cout << GREEN << "Given '~':" << CLEAR << std::endl;
-	ScalarConverter::convert("~");
-	std::cout << GREEN << "Given '€':" << CLEAR << std::endl;
-	ScalarConverter::convert("€");
-	std::cout << GREEN << "Given '128':" << CLEAR << std::endl;
-	ScalarConverter::convert("128");
-	std::cout << GREEN << "Given '-128':" << CLEAR << std::endl;
-	ScalarConverter::convert("-128");
-	std::cout << GREEN << "Given '127':" << CLEAR << std::endl;
-	ScalarConverter::convert("127");
+	convert("a");
+	convert("A");
+	convert("0");
+	convert("1");
+	convert("32");
+	convert("-32");
+	convert("126");
+	convert("~");
+	convert("€");
+	convert("128");
+	convert("-128");
+	convert("127");
+
+	std::cout << std::endl;
+}
+
+static void	testFloat(void)
+{
+	std::cout << "\033[36;4m" << "testFloat():" << CLEAR << std::endl;
+	std::cout << std::endl;
+
+	convert("-42.24");
+	convert("-42.24F");
+	convert("-42.24f");
+	convert("-42.2.4f");
+	convert("-42..24f");
+	convert("42.24");
+	convert("+42.24");
+	convert("0.0");
+	convert("123456789123456789.123456789123456789");
+
+	std::cout << std::endl;
+}
+
+static void	testException(void)
+{
+	std::cout << "\033[36;4m" << "testException():" << CLEAR << std::endl;
+	std::cout << std::endl;
+
+	convert("inf");
+	convert("-inf");
+	convert("inff");
+	convert("-inff");
+	convert("-INF");
+	convert("nan");
+	convert("-nan");
+	convert("nanf");
+	convert("-nanf");
 
 	std::cout << std::endl;
 }
@@ -71,6 +99,8 @@ int	main(int argc, char **argv)
 	{
 		testSubject();
 		testChars();
+		testFloat();
+		testException();
 	}
 	else if (argc == 2)
 		ScalarConverter::convert(argv[1]);
