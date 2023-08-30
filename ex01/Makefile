@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/24 14:53:38 by nplieger          #+#    #+#              #
-#    Updated: 2023/08/30 15:32:21 by nplieger         ###   ########.fr        #
+#    Updated: 2023/08/30 15:47:22 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRCS_EXTENSION	=			.cpp
 SRCS_PATH		=			./srcs
 MAIN_NAME		=			main
 
-SRCS_NAMES		=
+SRCS_NAMES		=			Serializer	\
+							Data		\
 
 #* ************************************************************************** *#
 #* *                               INCLUDES                                 * *#

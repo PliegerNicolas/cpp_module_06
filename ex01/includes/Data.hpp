@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 15:32:34 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 15:48:28 by nplieger         ###   ########.fr       */
+/*   Created: 2023/08/30 15:40:30 by nplieger          #+#    #+#             */
+/*   Updated: 2023/08/30 15:49:12 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
 
 # include <iostream>
+# include <string>
 
-# include "Data.hpp"
-
-/* **************************/
-/* This is a 'static class' */
-/* ************************ */
-
-class	Serializer
+class	Data
 {
 	private:
 		/* Attributs */
+		std::string	_content;
 
 		/* Constructors & Destructors */
-		Serializer(void);
-
-		Serializer(const Serializer &other);
-		Serializer	&operator=(const Serializer &other);
-
-		~Serializer(void);
 
 		/* Member functions */
 
@@ -45,8 +35,21 @@ class	Serializer
 		/* Attributs */
 
 		/* Constructors & Destructors */
+		Data(void);
+		Data(const std::string &content);
+
+		Data(const Data &other);
+		Data	&operator=(const Data &other);
+
+		~Data(void);
 
 		/* Member functions */
-		static uintptr_t	serialize(Data *ptr);
-		static Data			*deserialize(uintptr_t raw);
+
+		// Getter functions
+
+		std::string	getContent(void) const;
+
+		// Setter functions
+
+		void		setContent(const std::string &content);
 };

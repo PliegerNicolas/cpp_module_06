@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:34:00 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 15:35:37 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:48:50 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Serializer.hpp"
@@ -55,6 +55,19 @@ Serializer::~Serializer(void)
 /* Member functions */
 
 // Public
+
+uintptr_t	serialize(Data *ptr)
+{
+	(void)ptr;
+	return (0);
+}
+
+Data	*deserialize(uintptr_t raw)
+{
+	(void)raw;
+	return (nullptr);
+}
+
 
 // Protected
 
