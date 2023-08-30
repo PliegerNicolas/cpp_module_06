@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:43:09 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 15:48:18 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/30 16:06:17 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Data.hpp"
@@ -54,6 +54,12 @@ Data::~Data(void)
 	std::cout << "\033[33;2m";
 	std::cout << "Data : Default destructor called";
 	std::cout << "\033[0m" << std::endl;
+}
+
+std::ostream	&operator<<(std::ostream &os, const Data &data)
+{
+	os << data.getContent();
+	return (os);
 }
 
 /* Member Functions */

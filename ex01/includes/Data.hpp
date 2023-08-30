@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:40:30 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 15:49:12 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/30 16:06:29 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -53,3 +53,5 @@ class	Data
 
 		void		setContent(const std::string &content);
 };
+
+std::ostream	&operator<<(std::ostream &os, const Data &data);

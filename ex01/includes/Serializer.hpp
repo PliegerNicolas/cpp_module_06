@@ -6,12 +6,13 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:32:34 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 15:48:28 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:52:08 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
 
 # include <iostream>
+# include <cstdint>
 
 # include "Data.hpp"
 
