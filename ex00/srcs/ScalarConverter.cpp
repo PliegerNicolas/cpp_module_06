@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:38:01 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 13:52:29 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:40:02 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -72,11 +72,22 @@ void	ScalarConverter::convert(const std::string &input)
 
 void	ScalarConverter::checkCharConversion(const char &input)
 {
+	if (static_cast<int>(input) < 0 || static_cast<int>(input) > 255)
+		throw ConversionImpossibleException();
+	else
+	{
+		if (!std::isprint(input))
+			throw ConversionNonDisplayableException();
+	}
+/*
 	if (static_cast<int>(input) < 0
 		|| static_cast<int>(input) > 255)
+	{
 		throw ConversionImpossibleException();
-	else if (!std::isprint(input))
+	}
+	if (!std::isprint(input))
 		throw ConversionNonDisplayableException();
+*/
 }
 
 void	ScalarConverter::checkIntConversion(const double &value)
