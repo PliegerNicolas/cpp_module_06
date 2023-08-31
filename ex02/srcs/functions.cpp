@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:58:41 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 17:15:19 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/31 11:11:29 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Base.hpp"
@@ -33,23 +33,30 @@ Base	*generate(void)
 	return (nullptr);
 }
 
+/* Pass the address : */
+/* If dynamic_cast succeeds, object is returned, else nullptr */
 void	identify(Base *p)
 {
-	A	*a = nullptr;
-	B	*b = nullptr;
-	C	*c = nullptr;
-
-	if (dynamic_cast<A*>(p) == a)
-		std::cout << "a" << std::endl;
-	else if (dynamic_cast<B*>(p) == b)
-		std::cout << "b" << std::endl;
-	else if (dynamic_cast<C*>(p) == c)
-		std::cout << "c" << std::endl;
+	if (dynamic_cast<A*>(p))
+		std::cout << "Given pointer is : " << "A object" << std::endl;
+	else if (dynamic_cast<B*>(p))
+		std::cout << "Given pointer is : " << "B object" << std::endl;
+	else if (dynamic_cast<C*>(p))
+		std::cout << "Given pointer is : " << "C object" << std::endl;
 	else
-		std::cout << "?" << std::endl;
+		std::cout << "Given pointer is : " << "Unknown object" << std::endl;
 }
 
+/* Pass the address : */
+/* If dynamic_cast succeeds, object is returned, else nullptr */
 void	identify(Base &p)
 {
-	(void)p;
+	if (dynamic_cast<A*>(&p))
+		std::cout << "Given pointer is : " << "A object" << std::endl;
+	else if (dynamic_cast<B*>(&p))
+		std::cout << "Given pointer is : " << "B object" << std::endl;
+	else if (dynamic_cast<C*>(&p))
+		std::cout << "Given pointer is : " << "C object" << std::endl;
+	else
+		std::cout << "Given pointer is : " << "Unknown object" << std::endl;
 }

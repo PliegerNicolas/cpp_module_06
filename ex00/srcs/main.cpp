@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:16:34 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 15:27:05 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/31 11:14:00 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -14,6 +14,10 @@
 # define GREEN "\033[32m"
 # define RED "\033[31m"
 # define CLEAR "\033[0m"
+
+/* static_cast operator is a safer alternative to C-style casting. */
+/* It can promote to larger sizes when data loss is unlikely. */
+/* It doesn't do runtime conversion so it's not suitable for pointers and classes. */
 
 static void	convert(const std::string str)
 {

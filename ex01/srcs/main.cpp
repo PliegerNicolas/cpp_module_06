@@ -6,10 +6,15 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:30:37 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 16:07:58 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/31 11:15:23 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Serializer.hpp"
+
+/* reinterpret_cast : */
+/* It's used for low-level unsafe conversions between unrelated types. */
+/* One example of this is converting a pointer to an integer. */
+/* It can lead to a lot of undefined behaviors so this should be used with caution. */
 
 int	main(void)
 {
