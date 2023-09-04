@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:34:00 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 16:02:05 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:24:35 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Serializer.hpp"
@@ -58,7 +58,7 @@ Serializer::~Serializer(void)
 
 uintptr_t	Serializer::serialize(Data *ptr)
 {
-	return (reinterpret_cast<std::uintptr_t>(ptr));
+	return (reinterpret_cast<uintptr_t>(ptr));
 }
 
 Data	*Serializer::deserialize(uintptr_t raw)

@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:40:35 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 13:52:17 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:19:59 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "checkString.hpp"
@@ -30,8 +30,8 @@ static bool	verifyExceptionStrings(const std::string &input)
 		"inff"
 	};
 
-	for (std::string validString : validStrings)
-		if (input == validString)
+	for (size_t i = 0; i < sizeof(validStrings) / sizeof(validStrings[0]); i++)
+		if (input == validStrings[i])
 			return (true);
 	return (false);
 }

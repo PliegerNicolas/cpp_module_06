@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:30:37 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 11:15:23 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:24:45 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Serializer.hpp"
@@ -23,7 +23,7 @@ int	main(void)
 	uintptr_t	raw;
 
 	data1 = new Data("Wouah");
-	data2 = nullptr;
+	data2 = NULL;
 	raw = Serializer::serialize(data1);
 	data2 = Serializer::deserialize(raw);
 

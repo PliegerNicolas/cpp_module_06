@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:58:41 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 11:11:29 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:25:36 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Base.hpp"
@@ -21,7 +21,7 @@ Base	*generate(void)
 {
 	int	rand_value;
 
-	std::srand(static_cast<unsigned int>(time(nullptr)));
+	std::srand(static_cast<unsigned int>(time(NULL)));
 
 	rand_value = std::rand() % 3;
 	if (rand_value == 0)
@@ -30,7 +30,7 @@ Base	*generate(void)
 		return (new B());
 	else
 		return (new C());
-	return (nullptr);
+	return (NULL);
 }
 
 /* Pass the address : */
