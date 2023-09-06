@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:38:01 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/04 13:15:11 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:36:29 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -70,13 +70,13 @@ void	ScalarConverter::convert(const std::string &input)
 
 	/* Char */
 
-void	ScalarConverter::checkCharConversion(const char &input)
+void	ScalarConverter::checkCharConversion(const int &input)
 {
-	if (static_cast<int>(input) < 0 || static_cast<int>(input) > 255)
+	if (input < 0 || input > 255)
 		throw ConversionImpossibleException();
 	else
 	{
-		if (!std::isprint(input))
+		if (!std::isprint(static_cast<unsigned char>(input)))
 			throw ConversionNonDisplayableException();
 	}
 }

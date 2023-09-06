@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:34:27 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/30 13:46:58 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:36:38 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -46,7 +46,7 @@ class	ScalarConverter
 
 		/* Member functions */
 
-		static void	checkCharConversion(const char &input);
+		static void	checkCharConversion(const int &input);
 		static void	checkIntConversion(const double &value);
 
 		static void	charConversion(const char &input);
