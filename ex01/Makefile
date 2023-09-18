@@ -6,7 +6,7 @@
 #    By: nplieger <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/24 14:53:38 by nplieger          #+#    #+#              #
-#    Updated: 2023/09/04 13:21:14 by nplieger         ###   ########.fr        #
+#    Updated: 2023/09/18 14:22:12 by nplieger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,13 @@
 NAME			=			serializer
 AR				=			ar -rcs
 CC				=			c++
-CFLAGS			=			-std=c++98 -pedantic
+CFLAGS			=			-std=c++98 -frtti -pedantic
 RUN_PARAM		=			
+
+# -frtti explicitly enables RTTI (Run-Time Type Information).
+# Our compiler has it activated by default.
+# It keeps track of dynamic types.
+# A dynamic type is not bound to a specific data type at compile-time.
 
 #* ************************************************************************** *#
 #* *                                SOURCES                                 * *#

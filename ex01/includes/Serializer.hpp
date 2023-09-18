@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 15:32:34 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/04 13:24:01 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:23:39 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -31,8 +31,6 @@ class	Serializer
 		Serializer(const Serializer &other);
 		Serializer	&operator=(const Serializer &other);
 
-		~Serializer(void);
-
 		/* Member functions */
 
 	protected:
@@ -46,6 +44,7 @@ class	Serializer
 		/* Attributs */
 
 		/* Constructors & Destructors */
+		~Serializer(void);
 
 		/* Member functions */
 		static uintptr_t	serialize(Data *ptr);
