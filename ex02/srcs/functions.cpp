@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:58:41 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/22 10:18:59 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:39:44 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Base.hpp"
@@ -72,7 +72,8 @@ void	identify(Base &p)
 			}
 			catch (const std::exception &e)
 			{
-				std::cerr << "Given pointer is : " << "Unknown object" << std::endl;
+				std::cerr << "Given reference is : " << "Unknown object (";
+				std::cerr << e.what() << ")" << std::endl;
 			}
 		}
 	}
