@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:41:49 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 11:17:25 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:25:55 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Base.hpp"
@@ -15,6 +15,7 @@
 #include "C.hpp"
 
 #include "functions.cpp"
+#include <string>
 
 /* dynamic_cast : */
 /* It's specifically used for converting pointer or references of polymorphic */
@@ -24,12 +25,17 @@
 
 int	main(void)
 {
-	Base	*base;
+	Base	*base = generate();
+	Base	*error = new Base;
 
-	base = generate();
 	identify(base);
 	identify(*base);
 
+	identify(error);
+	identify(*error);
+
 	delete base;
+	delete error;
+
 	return (0);
 }

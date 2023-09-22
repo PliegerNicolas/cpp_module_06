@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:58:41 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/04 13:25:36 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:18:59 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Base.hpp"
@@ -44,19 +44,36 @@ void	identify(Base *p)
 	else if (dynamic_cast<C*>(p))
 		std::cout << "Given pointer is : " << "C object" << std::endl;
 	else
-		std::cout << "Given pointer is : " << "Unknown object" << std::endl;
+		std::cerr << "Given pointer is : " << "Unknown object" << std::endl;
 }
 
 /* Pass the address : */
 /* If dynamic_cast succeeds, object is returned, else nullptr */
 void	identify(Base &p)
 {
-	if (dynamic_cast<A*>(&p))
-		std::cout << "Given pointer is : " << "A object" << std::endl;
-	else if (dynamic_cast<B*>(&p))
-		std::cout << "Given pointer is : " << "B object" << std::endl;
-	else if (dynamic_cast<C*>(&p))
-		std::cout << "Given pointer is : " << "C object" << std::endl;
-	else
-		std::cout << "Given pointer is : " << "Unknown object" << std::endl;
+	try
+	{
+		static_cast<void>(dynamic_cast<A&>(p));
+		std::cout << "Given reference is : " << "A object" << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		try
+		{
+			static_cast<void>(dynamic_cast<B&>(p));
+			std::cout << "Given reference is : " << "B object" << std::endl;
+		}
+		catch (const std::exception &e)
+		{
+			try
+			{
+				static_cast<void>(dynamic_cast<C&>(p));
+				std::cout << "Given reference is : " << "C object" << std::endl;
+			}
+			catch (const std::exception &e)
+			{
+				std::cerr << "Given pointer is : " << "Unknown object" << std::endl;
+			}
+		}
+	}
 }
