@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:38:01 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/06 14:36:29 by nicolas          ###   ########.fr       */
+/*   Updated: 2023/10/15 05:41:47 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -58,8 +58,8 @@ ScalarConverter::~ScalarConverter(void)
 
 void	ScalarConverter::convert(const std::string &input)
 {
-	if (!input.empty() && input.size() == 1 && !std::isdigit(input[0]))
-		charConversion(input[0]);
+	if (!input.empty() && input.size() == 3 && input[0] == '\'' && input[2] == '\'')
+		charConversion(input[1]);
 	else
 		stringConversion(input);
 }

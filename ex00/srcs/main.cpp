@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 17:16:34 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 11:14:00 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/10/15 05:47:37 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ScalarConverter.hpp"
@@ -21,8 +21,8 @@
 
 static void	convert(const std::string str)
 {
-	std::cout << GREEN << "Given '";
-	std::cout << str << "':" << CLEAR << std::endl;
+	std::cout << GREEN << "Given ";
+	std::cout << str << ":" << CLEAR << std::endl;
 	ScalarConverter::convert(str);
 }
 
@@ -46,14 +46,19 @@ static void	testChars(void)
 	std::cout << GREEN << "Given empty string:" << CLEAR << std::endl;
 	ScalarConverter::convert("");
 	convert("a");
-	convert("A");
+	convert("'a'");
+	convert("'A'");
 	convert("0");
+	convert("'0'");
 	convert("1");
+	convert("'1'");
 	convert("32");
 	convert("-32");
 	convert("126");
 	convert("~");
+	convert("'~'");
 	convert("€");
+	convert("'€'");
 	convert("128");
 	convert("-128");
 	convert("127");
